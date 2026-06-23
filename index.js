@@ -70,7 +70,7 @@ app.get('/', (req, res) => {
             .close-btn:hover { color: #e50914; }
 
             /* REKLAM BANNER YERİ */
-            .ad-container { margin: 20px auto; text-align: center; max-width: 728px; }
+            .ad-container { margin: 30px auto; text-align: center; max-width: 728px; }
         </style>
     </head>
     <body>
@@ -79,16 +79,20 @@ app.get('/', (req, res) => {
             <h1>CINEAZ</h1>
         </header>
 
-        <!-- 💰 REKLAM BANNERİ (Sayt açılanda görünən reklam) -->
-        <div class="ad-container">
-            <!-- Gələcəkdə bura üst banner reklam kodu qoyacağıq -->
-        </div>
-
         <div class="container">
             <div class="section-title">🎬 Populyar Filmlər</div>
             <div class="film-grid">
                 ${filmKartlari}
             </div>
+        </div>
+
+        <!-- 💰 SƏNİN A-ADS REKLAM BANNERİN (Filmlərin tam altında görünəcək) -->
+        <div class="ad-container">
+            <!-- BEGIN AADS AD UNIT 2445437 -->
+            <div id="frame" style="width: 100%; margin: auto; position: relative; z-index: 99998;">
+                <iframe data-aa='2445437' src='//acceptable.a-ads.com/2445437/?size=Adaptive' style='border:0; padding:0; width:100%; height:80px; overflow:hidden; display: block; margin: auto'></iframe>
+            </div>
+            <!-- END AADS AD UNIT 2445437 -->
         </div>
 
         <!-- FİLM PLAYER PƏNCƏRƏSİ -->
@@ -101,11 +105,6 @@ app.get('/', (req, res) => {
 
         <script>
             function izle(id) {
-                // 💰 1. HİYLƏGƏR REKLAM SİSTEMİ (Popunder)
-                // İstifadəçi filmə klikləyəndə arxa fonda reklam açılacaq və sənə dollar qazandıracaq.
-                console.log("Reklam tetiklendi!");
-
-                // 2. Filmi başlatmaq
                 const filmler = ${JSON.stringify(FILMLER)};
                 const secilenFilm = filmler.find(f => f.id === id);
                 
