@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <title>Dil Öyrənmə</title>
+    <style>
+        body { background-color: #121212; color: white; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .card { background: #1e1e1e; padding: 30px; border-radius: 20px; text-align: center; border: 2px solid #58cc02; box-shadow: 0 0 20px rgba(88, 204, 2, 0.2); }
+        h1 { color: #58cc02; }
+        button { background: #58cc02; border: none; padding: 15px 30px; color: white; border-radius: 10px; cursor: pointer; font-size: 18px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Günün Sözü</h1>
+        <p id="word" style="font-size: 24px;">Yüklənir...</p>
+        <button onclick="getNewWord()">Növbəti Söz</button>
+    </div>
+    <script>
+        async function getNewWord() {
+            const res = await fetch('/get-word');
+            const data = await res.json();
+            document.getElementById('word').innerText = data.word + " = " + data.meaning;
+        }
+        getNewWord();
+    </script>
+</body>
+</html>
